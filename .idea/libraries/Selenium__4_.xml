@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Selenium (4)">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libraries/selenium-server-4.26.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

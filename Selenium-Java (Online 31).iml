@@ -8,11 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Selenium" level="project" />
     <orderEntry type="library" name="TestNG" level="project" />
-    <orderEntry type="library" name="Selenium (2)" level="project" />
-    <orderEntry type="library" name="Selenium 2" level="project" />
-    <orderEntry type="library" name="Selenium (3)" level="project" />
-    <orderEntry type="library" name="Selenium (4)" level="project" />
+    <orderEntry type="library" name="Selenium" level="project" />
   </component>
 </module>
