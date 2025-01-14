@@ -18,6 +18,7 @@ public class Topic_04_Register {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
+
     @Test
     public void Register_01_Empty_Data() {
         driver.get("https://alada.vn/tai-khoan/dang-ky.html");
@@ -29,7 +30,6 @@ public class Topic_04_Register {
         Assert.assertEquals(driver.findElement(By.id("txtPassword-error")).getText(),"Vui lòng nhập mật khẩu");
         Assert.assertEquals(driver.findElement(By.id("txtCPassword-error")).getText(),"Vui lòng nhập lại mật khẩu");
         Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(),"Vui lòng nhập số điện thoại.");
-
         //driver.quit();
     }
 
