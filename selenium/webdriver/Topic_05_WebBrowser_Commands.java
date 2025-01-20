@@ -66,16 +66,8 @@ public class Topic_05_WebBrowser_Commands {
         driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
         String actualText = driver.getPageSource();
         Assert.assertTrue(actualText.contains("Login or Create an Account"));
-
-//        assertEquals("https://live.techpanda.org/index.php/customer/account/create/", registerPageURL)
-//        driver.findElement(By.cssSelector("a[title='Create an Account']")).click();
-//        ;
-//        driver.navigate().back();
-//        String loginPageURL = driver.getCurrentUrl();
-//        assertEquals("https://live.techpanda.org/index.php/customer/account/login/",loginPageURL);
-//        driver.navigate().forward();
-//        String registerPageTitle2 = driver.getTitle();
-//        assertEquals("Create New Customer Account", registerPageTitle2);
+        driver.findElement(By.cssSelector("a[title='Create an Account']")).click();
+        Assert.assertTrue(driver.getPageSource().contains("Create New Customer Account"));
         driver.quit();
     }
 }

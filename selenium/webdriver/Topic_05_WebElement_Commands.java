@@ -19,58 +19,55 @@ public class Topic_05_WebElement_Commands {
         driver = new ChromeDriver();
         driver.get("https://automationfc.github.io/basic-form/index.html");
         WebElement email = driver.findElement(By.name("user_email"));
-        assertEquals(true,email.isDisplayed());
+        email.isDisplayed();
+        WebElement under18 = driver.findElement(By.id("under_18"));
+        under18.isDisplayed();
+        WebElement edu = driver.findElement(By.id("edu"));
+        edu.isDisplayed();
+//        WebElement name = driver.findElement(By.xpath("//h5[contains(text(),'User5')]");
+//        assertEquals(name.isDisplayed(),false);
+//        driver.findElement(By.xpath("//img[@alt='User Avatar 05']")).click();
+//        WebElement viewProfile = driver.findElement(By.xpath("//img[@alt='User Avatar 05']"));
+
+
+        email.sendKeys("Automation Test");
+        assertEquals("Automation Test", email.getDomProperty("value"));
+        edu.sendKeys("Automation Test");
+        assertEquals("Automation Test",edu.getDomProperty("value"));
+//        under18.click();
+
+//        //Check if elements displayed and print the result to console
+//        if (name.isDisplayed() == true && viewProfile.isDisplayed() == true) {
+//            System.out.println("Element is displayed");
+//        } else {
+//            System.out.println("Element is not displayed");
+//        }
         driver.quit();
     }
 
-//    @Test
-//    public void TC_02_VerifyTitle() {
-//        driver = new ChromeDriver();
-//        driver.get("https://live.techpanda.org/");
-//        driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-//        String loginPageTitle = driver.getTitle();
-//        assertEquals("Customer Login",loginPageTitle);
-//        driver.findElement(By.cssSelector("a[title='Create an Account']")).click();
-//        String createAccountPageTitle = driver.getTitle();
-//        assertEquals("Create New Customer Account",createAccountPageTitle);
-//        driver.quit();
-//    }
-//
-//    @Test
-//    public void TC_03_NavigateFunction() {
-//        driver = new EdgeDriver();
-//        driver.get("https://live.techpanda.org/");
-//        driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-//        driver.findElement(By.cssSelector("a[title='Create an Account']")).click();
-//        String registerPageURL = driver.getCurrentUrl();
-//        assertEquals("https://live.techpanda.org/index.php/customer/account/create/", registerPageURL);
-//        driver.navigate().back();
-//        String loginPageURL = driver.getCurrentUrl();
-//        assertEquals("https://live.techpanda.org/index.php/customer/account/login/",loginPageURL);
-//        driver.navigate().forward();
-//        String registerPageTitle2 = driver.getTitle();
-//        assertEquals("Create New Customer Account", registerPageTitle2);
-//        driver.quit();
-//    }
-//
-//    @Test
-//    public void TC_04_GetPageSource() {
-//        driver = new EdgeDriver();
-//        driver.get("https://live.techpanda.org/");
-//        driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-//        String actualText = driver.getPageSource();
-//        Assert.assertTrue(actualText.contains("Login or Create an Account"));
-//
-////        assertEquals("https://live.techpanda.org/index.php/customer/account/create/", registerPageURL)
-////        driver.findElement(By.cssSelector("a[title='Create an Account']")).click();
-////        ;
-////        driver.navigate().back();
-////        String loginPageURL = driver.getCurrentUrl();
-////        assertEquals("https://live.techpanda.org/index.php/customer/account/login/",loginPageURL);
-////        driver.navigate().forward();
-////        String registerPageTitle2 = driver.getTitle();
-////        assertEquals("Create New Customer Account", registerPageTitle2);
-//        driver.quit();
-//    }
+    @Test
+    public void TC_03_CheckElementIsSelected() {
+        driver = new ChromeDriver();
+        driver.get("https://automationfc.github.io/basic-form/index.html");
+        WebElement under18 = driver.findElement(By.id("under_18"));
+        under18.click();
+        WebElement javaCheckbox = driver.findElement(By.id("java"));
+        javaCheckbox.click();
+        if(javaCheckbox.isSelected() == true && under18.isSelected() == true) {
+            System.out.println("Element is selected");
+        } else
+        {
+            System.out.println("Element is de-selected");
+        }
+        javaCheckbox.click();
+        if(javaCheckbox.isSelected() == true && under18.isSelected() == true) {
+            System.out.println("Element is selected");
+        } else
+        {
+            System.out.println("Element is de-selected");
+        }
+        driver.quit();
+    }
+
 }
 
