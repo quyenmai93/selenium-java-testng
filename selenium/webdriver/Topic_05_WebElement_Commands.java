@@ -235,11 +235,54 @@ public class Topic_05_WebElement_Commands {
         Assert.assertFalse(driver.findElement(By.cssSelector("li.special-char.completed")).isDisplayed());
         Assert.assertFalse(driver.findElement(By.cssSelector("li[class='8-char completed']")).isDisplayed());
         Assert.assertFalse(driver.findElement(By.cssSelector("li.username-check.completed")).isDisplayed());
-
         driver.quit();
-
-
     }
 
+    @Test
+    public void TC_05_Login_TechPanda() throws InterruptedException {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        //go to web
+        driver.get("https://live.techpanda.org/");
+        //go to login
+        driver.findElement(By.cssSelector("a.skip-link.skip-account")).click();
+        driver.findElement(By.xpath("//a[@title='Log In']")).click();
+
+        WebElement email = driver.findElement(By.id("email"));
+        WebElement password = driver.findElement(By.id("pass"));
+        WebElement loginButton = driver.findElement(By.id("send2"));
+
+        //login with empty credentials
+        loginButton.click();
+        Thread.sleep(3000);
+        Assert.assertEquals(driver.findElement(By.cssSelector("div[id='advice-required-entry-email']")).getText(), "This is a required field.");
+        Assert.assertEquals(driver.findElement(By.cssSelector("div[id='advice-required-entry-pass']")).getText(), "This is a required field.");
+
+        //login with invalid email
+        email.sendKeys("dsfdsfsd@sdfsdfsdf");
+        password.sendKeys("sdfsdsdf");
+        loginButton.click();
+        Thread.sleep(3000);
+        Assert.assertEquals(driver.findElement(By.cssSelector("div[id='advice-validate-email-email']")).getText(), "Please enter a valid email address. For example johndoe@domain.com.");
+
+        //login with pass less than 6 char
+        email.clear();
+        password.clear();
+        email.sendKeys("test@gmail.com");
+        password.sendKeys("sdf");
+        loginButton.click();
+        Thread.sleep(3000);
+        Assert.assertEquals(driver.findElement(By.cssSelector("div[id='advice-validate-password-pass']")).getText(), "Please enter 6 or more characters without leading or trailing spaces.");
+
+        //login with incorrect email
+//        email.clear();
+//        password.clear();
+//        email.sendKeys("automation@gmail.com");
+//        password.sendKeys("123123123");
+//        loginButton.click();
+//        Assert.assertEquals(driver.findElement(By.cssSelector("div[id='advice-validate-password-pass']")).getText(), "Please enter 6 or more characters without leading or trailing spaces.");
+        driver.quit();
+    }
 }
 
