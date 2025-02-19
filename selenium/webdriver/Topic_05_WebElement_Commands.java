@@ -5,7 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -28,7 +27,7 @@ public class Topic_05_WebElement_Commands {
         WebElement edu = driver.findElement(By.id("edu"));
         edu.isDisplayed();
         WebElement name = driver.findElement(By.xpath("//h5[contains(text(),'User5')]"));
-        assertEquals(name.isDisplayed(),false);
+        Assert.assertFalse(name.isDisplayed());
         driver.findElement(By.xpath("//img[@alt='User Avatar 05']")).click();
         WebElement viewProfile = driver.findElement(By.xpath("//img[@alt='User Avatar 05']"));
 
